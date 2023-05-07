@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+                // Get the HTML element that you want to detect the events on
+        const element = window
+
+        // Variables to store the touch position
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        // Add touchstart event listener to record the starting position
+        element.addEventListener('touchstart', (event) => {
+        touchStartX = event.touches[0].clientX;
+        });
+
+        // Add touchend event listener to record the ending position
+        element.addEventListener('touchend', (event) => {
+        touchEndX = event.changedTouches[0].clientX;
+
+        // Calculate the difference in position
+        const touchDiffX = touchStartX - touchEndX;
+
+        // Check if it's a left or right swipe
+        if (touchDiffX > 50) {
+            // Left swipe detected
+            console.log('Left swipe detected');
+            fetch('/left');
+        } else if (touchDiffX < -50) {
+            // Right swipe detected
+            console.log('Right swipe detected');
+            fetch('/right');
+        } else {
+            // Tap detected
+            console.log('Tap detected');
+            fetch('/tap');
+        }
+        });
+
+    </script>
+</body>
+</html>
