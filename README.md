@@ -1,5 +1,5 @@
 # SpotiSwipe
 ---
-**SpotiSwipe** is an HTML/CSS/JS webapp that can control your devices' playback **with a swipe**.
-idk why i named it spotiswipe when it should work on other programs controllable with function keys loloawoewe
+**SpotiSwipe** is an HTML/CSS/JS webapp that can control your devices' playback **with a swipe**. 
+idk why i named it spotiswipe when it should work on other programs controllable with function keys loloawoewe 
 
