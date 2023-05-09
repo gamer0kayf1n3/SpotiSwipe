@@ -14,18 +14,24 @@
         // Variables to store the touch position
         let touchStartX = 0;
         let touchEndX = 0;
-
+        let touchStartY = 0;
+        let touchEndY = 0;
         // Add touchstart event listener to record the starting position
         element.addEventListener('touchstart', (event) => {
         touchStartX = event.touches[0].clientX;
+        touchStartY = event.touches[0].clientY;
+        event.preventDefault()
         });
 
         // Add touchend event listener to record the ending position
         element.addEventListener('touchend', (event) => {
         touchEndX = event.changedTouches[0].clientX;
+        touchEndY = event.changedTouches[0].clientY;
+        event.preventDefault()
 
         // Calculate the difference in position
         const touchDiffX = touchStartX - touchEndX;
+        const touchDiffY = touchStartY - touchEndY;
 
         // Check if it's a left or right swipe
         if (touchDiffX > 50) {
@@ -36,7 +42,17 @@
             // Right swipe detected
             console.log('Right swipe detected');
             fetch('/right');
-        } else {
+        }
+        
+        else if (touchDiffY > 50) {
+            // Left swipe detected
+            console.log('Up swipe detected');
+            fetch('/up');
+        } else if (touchDiffY < -50){
+            // Right swipe detected
+            console.log('Down swipe detected');
+            fetch('/down');
+        }else {
             // Tap detected
             console.log('Tap detected');
             fetch('/tap');
